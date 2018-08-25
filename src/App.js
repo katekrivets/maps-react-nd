@@ -1,30 +1,29 @@
 import React, { Component } from 'react';
-import GoogleMapsLoader from "google-maps";
 import './App.css';
+import Map from './components/Map.js';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      map: ""
-    }
+  state = {
+    map: "",
+    coordinates: {lat: 59.9473364, lng: 30.2685361},
+    zoom: 12,
+    locations: []
   }
   componentDidMount() {
-    GoogleMapsLoader.load(function(google) {
-      new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 40.7413549, lng: -73.9980244},
-        zoom: 13,
-        mapTypeControl: false
-      });
-    })
-    GoogleMapsLoader.KEY = 'AIzaSyCLgxZfnB0Z_jW23hZqWbpnR4LU9TW9oQ0';
+    this.getAllLocations()
+    //GoogleMapsLoader.KEY = 'AIzaSyCLgxZfnB0Z_jW23hZqWbpnR4LU9TW9oQ0';
 
+  }
+  getAllLocations() {
+    fetch('locations.json').then((resp) => {
+      console.log(resp)
+    }).then(data => {console.log(data)});
   }
   render() {
     return (
-      <div className="map"></div>
+      <Map center={this.state.coordinates} zoom={this.state.zoom}/>
     );
-  }
+  } 
 }
 
 // ReactDOM.render(<MyMapComponent isMarkerShown />, document.getElementById("root"));
