@@ -21,7 +21,7 @@ main {
 }
 /*header*/
 header {
-  height: 60px;
+  height: 50px;
   background-color: #F4EAEA ;
   box-shadow: 0px 2px 2px 0px rgba(112, 94, 92, 0.281);
   z-index: 2;
@@ -30,9 +30,9 @@ header {
 .burger-menu {
   background: url('./img/menu.png') no-repeat ;
   background-size: contain;
-  height: 36px;
-  width: 32px;
-  margin: 14px 0px 14px 20px;
+  height: 28px;
+  width: 30px;
+  margin: 11px 0px 11px 20px;
   opacity: 0.5;
   cursor: pointer;
 }
@@ -43,4 +43,25 @@ header {
 }
 .map-container {
   flex: 10 10 1000px;
+}
+
+.search {
+  padding: 30px 20px;
+}
+
+.search input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  border: 2px solid #f0cbc9 ;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #fbf7f7 ;
+  color: #6d5d5d;
+}
+.search input:active,
+.search input:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 5px 0px rgba(222,189,189,1);
 }
