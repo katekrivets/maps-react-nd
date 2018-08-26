@@ -17,7 +17,7 @@ color scheme
 main {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
 }
 /*header*/
 header {
@@ -40,13 +40,15 @@ header {
 .side-bar {
   flex: 1 1 350px;
   background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
 }
 .map-container {
   flex: 10 10 1000px;
 }
 
 .search {
-  padding: 30px 20px;
+  padding: 30px 20px ;
 }
 
 .search input {
@@ -64,4 +66,32 @@ header {
 .search input:focus {
   outline: none;
   box-shadow: inset 0px 0px 5px 0px rgba(222,189,189,1);
+}
+
+/*location box*/
+.search-results {
+  padding: 0 20px 20px;
+  overflow-y: scroll;
+}
+.box {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  background-color: #eedddd;
+  border-radius: 3px;
+  color: #6d5d5d;
+  box-sizing: border-box;
+
+}
+
+.location-name {
+  margin: 5px 0;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+.location-address {
+  margin: 8px 0 5px;
+  font-size: 13px;
+  color: #927c7c;
+  box-sizing: border-box;
 }

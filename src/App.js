@@ -18,9 +18,12 @@ class App extends Component {
   componentDidMount() {
     this.getAllLocations()
     //GoogleMapsLoader.KEY = 'AIzaSyCLgxZfnB0Z_jW23hZqWbpnR4LU9TW9oQ0';
-
   }
-  searchLocations(query) {
+
+  searchLocations = (query) => {
+    if ( query === undefined || query === '') {
+      return;
+    }
     const info = {
       key: "DWSRTUBHPKWDGKIQMO0QATTR2I43KYQBZ3TVCQ5NNQ1JF03Q",
       secret: "IU0FZU1DKGWXVBKWP3XR4MQZA3GVCZTEO0WN4EFHX2LNZLIR",
@@ -28,17 +31,17 @@ class App extends Component {
     }
     const {key, secret, place} = info;
     fetch(`https://api.foursquare.com/v2/venues/search?client_id=${key}&client_secret=${secret}&v=20180826&ll=${place}&radius=150000&limit=40&categoryId=4d4b7104d754a06370d81259&query=${query}`)
-    .then(response => response.json())
-    .then(r => {
-      const locations = r.response.venues;
-        this.setState({
-          filteredLocations: locations
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      this.setState({ error: true });
-    });
+      .then((resp) => { if(resp) { return resp.json()}} )
+      .then((r) => {
+        const locations = r.response.venues;
+          this.setState({
+            filteredLocations: locations
+          });
+          console.log(this.state.filteredLocations)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   getAllLocations() {
     const {key, secret, place} = this.state;
@@ -46,7 +49,6 @@ class App extends Component {
     .then(response => response.json())
     .then(r => {
       const locations = r.response.groups[0].items;
-      console.log(r.response.groups[0].items)
         this.setState({
           locations: locations,
           filteredLocations: locations
@@ -70,8 +72,9 @@ class App extends Component {
         <main>
           { this.state.menuShown && 
                     <SideMenu 
-                      searchLocations={this.searchLocations}>
-                    </SideMenu> }
+                      searchLocations={this.searchLocations}
+                      filteredLocations={this.state.filteredLocations}
+                      />}
           <div className="map-container">
             <Map 
               center={this.state.coordinates} 
@@ -85,5 +88,4 @@ class App extends Component {
   } 
 }
 
-// ReactDOM.render(<MyMapComponent isMarkerShown />, document.getElementById("root"));
 export default App;

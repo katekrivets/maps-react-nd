@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import {DebounceInput} from 'react-debounce-input';
 class Search extends Component {
     state = {
         query: ""
     }
     updQuery(query) {
-        console.log(this.props)
+        console.log(query)
         this.props.searchLocations(query)
     }
     render() {
         return ( 
             <div className="search">
-                <input 
-                    type="text"
-                    placeholder="Search by title or author"
-                    onChange={(event) => this.updQuery(event.target.value)}
-                />
+                <DebounceInput
+                    placeholder="Search by name or category..."
+                    minLength={2}
+                    debounceTimeout={1000}
+                    onChange={(event) => this.updQuery(event.target.value)} />
                 {console.log(this.state.query)}
             </div>
         )
