@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/Map.js';
-
+import Map from './components/Map';
+import SideMenu from './components/SideMenu';
 class App extends Component {
   state = {
     map: "",
@@ -20,7 +20,7 @@ class App extends Component {
     const key = "DWSRTUBHPKWDGKIQMO0QATTR2I43KYQBZ3TVCQ5NNQ1JF03Q";
     const secret = "IU0FZU1DKGWXVBKWP3XR4MQZA3GVCZTEO0WN4EFHX2LNZLIR";
     const place = "59.9473,30.2685"
-    fetch(`https://api.foursquare.com/v2/venues/explore?client_id=${key}&client_secret=${secret}&v=20180323&ll=${place}&radius=6000&limit=36&categoryId=4d4b7104d754a06370d81259`)
+    fetch(`https://api.foursquare.com/v2/venues/explore?client_id=${key}&client_secret=${secret}&v=20180323&ll=${place}&radius=150000&limit=40&categoryId=4d4b7104d754a06370d81259`)
     .then(response => response.json())
     .then(r => {
       const locations = r.response.groups[0].items;
@@ -35,9 +35,27 @@ class App extends Component {
       this.setState({ error: true });
     });
   }
+  hideSideMenu(e) {
+    console.log(e.target)
+  }
   render() {
     return (
-      <Map center={this.state.coordinates} zoom={this.state.zoom} locations={this.state.filteredLocations}/>
+      <div className="container">
+        <header>
+          <div className="burger-menu" onClick={this.hideSideMenu}></div>
+          <div className="github-link"></div>
+        </header>
+        <main>
+          <SideMenu></SideMenu>
+          <div className="map-container">
+            <Map 
+              center={this.state.coordinates} 
+              zoom={this.state.zoom} 
+              locations={this.state.filteredLocations}
+            />  
+          </div>
+        </main>
+      </div>
     );
   } 
 }
