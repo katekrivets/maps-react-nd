@@ -9,7 +9,8 @@ class App extends Component {
     zoom: 12,
     locations: [],
     filteredLocations: [],
-    error: false
+    error: false,
+    menuShown: true
   }
   componentDidMount() {
     this.getAllLocations()
@@ -35,8 +36,8 @@ class App extends Component {
       this.setState({ error: true });
     });
   }
-  hideSideMenu(e) {
-    console.log(e.target)
+  hideSideMenu = () => {
+    this.setState(this.state.menuShown?{menuShown: false}:{menuShown:true})
   }
   render() {
     return (
@@ -46,7 +47,7 @@ class App extends Component {
           <div className="github-link"></div>
         </header>
         <main>
-          <SideMenu></SideMenu>
+          { this.state.menuShown && <SideMenu></SideMenu> }
           <div className="map-container">
             <Map 
               center={this.state.coordinates} 
