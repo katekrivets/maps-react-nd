@@ -1,26 +1,31 @@
-{
-    "Saint Isaac's Cathedral": {
+[{
+        "name": "Saint Isaac's Cathedral",
         "lat": "59.9340569",
         "lng": "30.3064633"
     },
-    "300th Anniversary Park": {
+    {
+        "name": "300th Anniversary Park",
         "lat": "59.9839074",
         "lng": "30.2020524"
     },
-    "Peter and Paul Fortress": {
+    {
+        "name": "Peter and Paul Fortress",
         "lat": "59.9502023",
         "lng": "30.3169665"
     },
-    "Best Icecream and Food :)": {
+    {
+        "name": "Best Icecream and Food :)",
         "lat": "59.9298262",
         "lng": "30.374853"
     },
-    "Kirov Central Park / Yelagin Island": {
+    {
+        "name": "Kirov Central Park / Yelagin Island",
         "lat": "59.9790024",
         "lng": "30.2587724"
     },
-    "Tauride Garden": {
+    {
+        "name": "Tauride Garden",
         "lat": "59.9451237",
         "lng": "30.3721525"
     }
-}
+]
