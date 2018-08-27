@@ -19,7 +19,8 @@ class App extends Component {
     showInfoWindow: false,
     chosenMarker: {},
     markerLoca: {},
-    modalOpen: false
+    modalOpen: false,
+    setAnimation: 0
   }
   onOpenModal = () => {
     this.setState({ modalOpen: true });
@@ -70,6 +71,7 @@ class App extends Component {
     this.setState({
       showInfoWindow: true,
       chosenMarker: marker,
+      setAnimation: 1,
       markerLoca: marker.venue ? {
         lat: marker.venue.location.lat,
         lng: marker.venue.location.lng
@@ -85,6 +87,7 @@ class App extends Component {
     this.setState({
       chosenMarker: loca,
       showInfoWindow: true,
+      setAnimation: 1,
       markerLoca: loca.venue ? {
         lat: loca.venue.location.lat,
         lng: loca.venue.location.lng
@@ -99,6 +102,7 @@ class App extends Component {
     this.setState({
       chosenMarker: {},
       showInfoWindow: false,
+      setAnimation: 0,
       markerLoca: {}
     })
   }
@@ -127,6 +131,7 @@ class App extends Component {
               clickMarker={this.clickMarker}
               closeInfoWindow={this.closeInfoWindow}
               markerLoca={this.state.markerLoca}
+              setAnimation={this.state.setAnimation}
             />  
             <Modal open={this.state.modalOpen} onClose={this.onCloseModal} center>
               <h3>{this.state.error}</h3>

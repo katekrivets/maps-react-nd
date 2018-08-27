@@ -33,6 +33,7 @@ const MyMapComponent = compose(
           address={marker.venue.location.address}
           id={marker.venue.id}
           onClick={() => (props.clickMarker(marker))}
+          animation={props.chosenMarker.venue? marker.venue.id === props.chosenMarker.venue.id ?1:null : null}
         />):(
           <Marker icon={icon} 
           key={marker.id} 
@@ -41,6 +42,7 @@ const MyMapComponent = compose(
           address={marker.location.address}
           id={marker.id}
           onClick={() => (props.clickMarker(marker))}
+          animation={marker.id === props.chosenMarker.id?1:null}
         />
         )
       )
