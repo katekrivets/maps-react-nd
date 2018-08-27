@@ -59,9 +59,12 @@ class App extends Component {
     this.setState({
       showInfoWindow: true,
       chosenMarker: marker,
-      markerLoca: {
+      markerLoca: marker.venue ? {
         lat: marker.venue.location.lat,
         lng: marker.venue.location.lng
+      } : {
+        lat: marker.location.lat,
+        lng: marker.location.lng
       }
     })
   }
@@ -79,6 +82,7 @@ class App extends Component {
       }
     })
   }
+  
   closeInfoWindow = () => {
     this.setState({
       chosenMarker: {},
@@ -91,7 +95,7 @@ class App extends Component {
       <div className="container">
         <header>
           <div className="burger-menu" onClick={this.hideSideMenu}></div>
-          <div className="github-link"></div>
+          <div className="github-link"><a href="https://github.com/katerren">GitHub</a></div>
         </header>
         <main>
           { this.state.menuShown && 
@@ -105,7 +109,7 @@ class App extends Component {
             <Map 
               center={this.state.coordinates} 
               zoom={this.state.zoom} 
-              locations={this.state.locations}
+              locations={this.state.filteredLocations}
               showInfoWindow={this.state.showInfoWindow}
               chosenMarker={this.state.chosenMarker}
               clickMarker={this.clickMarker}

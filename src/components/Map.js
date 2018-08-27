@@ -25,6 +25,7 @@ const MyMapComponent = compose(
   defaultCenter={props.center}
   onClick={props.closeInfoWindow}>
     { props.locations[0] && props.locations.map(marker => (
+      marker.venue?(
         <Marker icon={icon} 
           key={marker.venue.id} 
           position={{ lat: marker.venue.location.lat, lng: marker.venue.location.lng }} 
@@ -32,7 +33,16 @@ const MyMapComponent = compose(
           address={marker.venue.location.address}
           id={marker.venue.id}
           onClick={() => (props.clickMarker(marker))}
+        />):(
+          <Marker icon={icon} 
+          key={marker.id} 
+          position={{ lat: marker.location.lat, lng: marker.location.lng }} 
+          name={marker.name}
+          address={marker.location.address}
+          id={marker.id}
+          onClick={() => (props.clickMarker(marker))}
         />
+        )
       )
     )})
     { props.showInfoWindow && 
