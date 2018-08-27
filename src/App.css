@@ -17,7 +17,7 @@ color scheme
 main {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 50px);
 }
 /*header*/
 header {
@@ -64,4 +64,38 @@ header {
 .search input:focus {
   outline: none;
   box-shadow: inset 0px 0px 5px 0px rgba(222,189,189,1);
+}
+/*locations side-menu*/
+.search-container {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 175px);
+  overflow-y: scroll;
+}
+.loca-box {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background-color: #f4eaea;
+  color: #493939;
+  border-radius: 3px;
+}
+.loca-box:hover {
+  background-color: #e9d0d0;
+}
+
+.loca-name {
+  font-size: 16px;
+}
+
+.loca-address {
+  padding-top: 8px;
+  font-size: 14px;
+  color: #756060;
+}
+/*pop styles*/
+.location-name {
+  font-weight: bolder;
+  width: 150px;
 }
