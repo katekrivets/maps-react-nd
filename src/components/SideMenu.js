@@ -17,11 +17,13 @@ class SideMenu extends Component {
                                 key={loca.venue.id}
                                 name={loca.venue.name}
                                 address={loca.venue.location.address}
+                                clickkBox={() => {this.props.clickkBox(loca)}}
                             />
                             :<LocaBox
                                 key={loca.id}
                                 name={loca.name}
                                 address={loca.location.address}
+                                clickkBox={() => {this.props.clickkBox(loca)}}
                             /> 
                         )))
                     }

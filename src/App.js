@@ -12,7 +12,8 @@ class App extends Component {
     filteredLocations: [],
     error: false,
     menuShown: true,
-    clickedMarker: {}
+    showInfoWindow: false,
+    chosenMarker: {}
   }
   componentDidMount() {
     this.getAllLocations()
@@ -28,11 +29,6 @@ class App extends Component {
       })
       .catch(err => this.setState({error: err}))
   }
-  onMapClick = () => {
-    this.setState({
-      showInfoWindow: false
-    });
-  }
   getAllLocations() {
     getLocations()
     .then(r => {
@@ -47,6 +43,26 @@ class App extends Component {
   hideSideMenu = () => {
     this.setState(this.state.menuShown?{menuShown: false}:{menuShown:true})
   }
+  clickMarker = (marker) => {
+    console.log(marker)
+    this.setState({showInfoWindow:true,
+              chosenMarker: marker})
+    console.log(this.state.showInfoWindow);
+    
+  }
+  clickkBox = (loca) => {
+    this.setState({
+      chosenMarker: loca.venue?loca:{},
+      showInfoWindow:true
+    })
+    console.log(loca)
+  }
+  closeInfoWindow = () => {
+    this.setState({
+      chosenMarker: {},
+      showInfoWindow: false
+    })
+  }
   render() {
     return (
       <div className="container">
@@ -56,17 +72,23 @@ class App extends Component {
         </header>
         <main>
           { this.state.menuShown && 
-                    <SideMenu 
-                      searchLocations={this.searchLocations}
-                      filteredLocations={this.state.filteredLocations}
-                      >
-                    </SideMenu> }
+            <SideMenu 
+              searchLocations={this.searchLocations}
+              filteredLocations={this.state.filteredLocations}
+              clickkBox={this.clickkBox}
+              >
+            </SideMenu> }
           <div className="map-container">
             <Map 
               center={this.state.coordinates} 
               zoom={this.state.zoom} 
               locations={this.state.locations}
+              showInfoWindow={this.state.showInfoWindow}
+              chosenMarker={this.state.chosenMarker}
+              clickMarker={this.clickMarker}
+              closeInfoWindow={this.closeInfoWindow}
             />  
+            
           </div>
         </main>
       </div>

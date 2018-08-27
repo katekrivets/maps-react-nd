@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class LocaBox extends Component {
     render() {
         return (
-            <div className="box">
-                <div className="location-name">
+            <div className="box" onClick={this.props.clickkBox}>
+                <div className="loca-name">
                     {this.props.name}
                 </div>
-                <div className="location-address">
+                <div className="loca-address" onClick={this.props.clickkBox}>
                     {this.props.address}
                 </div>
             </div>

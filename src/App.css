@@ -77,7 +77,7 @@ header {
   width: 100%;
   margin-bottom: 15px;
   padding: 10px 20px;
-  background-color: #eedddd;
+  background-color: #F4EAEA;
   border-radius: 3px;
   color: #6d5d5d;
   box-sizing: border-box;
@@ -86,9 +86,11 @@ header {
 
 .location-name {
   margin: 5px 0;
+  max-width: 220px; 
   box-sizing: border-box;
   font-size: 15px;
   font-weight: bold;
+  color: #223d25 ;
 }
 .location-address {
   margin: 8px 0 5px;
@@ -104,24 +106,20 @@ header {
   height: calc(100vh - 175px);
   overflow-y: scroll;
 }
-.loca-box {
-  margin-bottom: 15px;
-  padding: 10px 15px;
-  box-sizing: border-box;
-  background-color: #f4eaea;
-  color: #493939;
-  border-radius: 3px;
-}
-.loca-box:hover {
+.box:hover {
   background-color: #e9d0d0;
 }
 
 .loca-name {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .loca-address {
   padding-top: 8px;
   font-size: 14px;
-  color: #756060;
+}
+
+.information {
+  color: #3e5841 ;
 }

@@ -14,8 +14,8 @@ class Search extends Component {
                     placeholder="Search by name or category..."
                     minLength={2}
                     debounceTimeout={1000}
-                    onChange={(event) => this.updQuery(event.target.value)} />
-                {console.log(this.state.query)}
+                    onChange={(event) => this.updQuery(event.target.value)}
+                />
             </div>
         )
     }
