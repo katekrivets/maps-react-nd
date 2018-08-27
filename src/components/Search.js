@@ -5,7 +5,6 @@ class Search extends Component {
         query: ""
     }
     updQuery(query) {
-        console.log(query)
         this.props.searchLocations(query)
     }
     render() {

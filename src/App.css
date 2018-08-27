@@ -88,10 +88,40 @@ header {
   margin: 5px 0;
   box-sizing: border-box;
   font-size: 15px;
+  font-weight: bold;
 }
 .location-address {
   margin: 8px 0 5px;
   font-size: 13px;
   color: #927c7c;
   box-sizing: border-box;
+}
+/*locations side-menu*/
+.search-container {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 175px);
+  overflow-y: scroll;
+}
+.loca-box {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background-color: #f4eaea;
+  color: #493939;
+  border-radius: 3px;
+}
+.loca-box:hover {
+  background-color: #e9d0d0;
+}
+
+.loca-name {
+  font-size: 16px;
+}
+
+.loca-address {
+  padding-top: 8px;
+  font-size: 14px;
+  color: #756060;
 }

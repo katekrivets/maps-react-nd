@@ -1,12 +1,11 @@
 import React from "react";
-import { compose, withProps } from "recompose";
+import { compose, withProps} from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
-  GoogleMap,
-  Marker
+  GoogleMap
 } from "react-google-maps";
-import icon from './../img/marker.svg'
+import MarkerInfo from './MarkerWithInfoWindow';
 
 const MyMapComponent = compose(
   withProps({
@@ -21,13 +20,16 @@ const MyMapComponent = compose(
 )(props => (
   <GoogleMap 
   defaultZoom={props.zoom} 
-  defaultCenter={props.center}>
-    { props.locations[0] && props.locations.map(marker => (
-      <Marker icon={icon} 
-              key={marker.venue.id} 
-              position={{ lat: marker.venue.location.lat, lng: marker.venue.location.lng }} 
-      />
-    ))}
+  defaultCenter={props.center}
+  onClick={props.onMapClick}>
+    { props.locations[0] && props.locations.map(marker => {
+      return(
+        <MarkerInfo 
+          key={marker.venue.id} 
+          marker={marker}/>
+      )}
+    )})
+    
   </GoogleMap>
 ));
 

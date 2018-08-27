@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import Search from './Search';
-import LocationBox from './LocationBox';
+import LocaBox from './LocaBox';
 
 class SideMenu extends Component {
     render() {
-        let {searchLocations, filteredLocations} = this.props
+        console.log(this.props)
         return ( 
             <div className="side-bar">
-            <Search
-                searchLocations={searchLocations}
-            />
+                <Search
+                    searchLocations={this.props.searchLocations}
+                />
                 <div className="search-results">
-                { filteredLocations.length && 
-                    filteredLocations.map(loca => (
-                        <LocationBox 
-                            key={loca.venue.id}
-                            sight={loca.venue}
-                        />
-                    ))
-                }
-                   
+                    {this.props.filteredLocations && (this.props.filteredLocations.map((loca) => (
+                            loca.venue?
+                            <LocaBox
+                                key={loca.venue.id}
+                                name={loca.venue.name}
+                                address={loca.venue.location.address}
+                            />
+                            :<LocaBox
+                                key={loca.id}
+                                name={loca.name}
+                                address={loca.location.address}
+                            /> 
+                        )))
+                    }
+                
                 </div>
             </div>
+            
         )
     }
 }

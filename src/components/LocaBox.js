@@ -1,17 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-class Box extends Component {
+class LocaBox extends Component {
     render() {
         return (
             <div className="box">
                 <div className="location-name">
-                    {this.props.sight.name}
+                    {this.props.name}
                 </div>
                 <div className="location-address">
-                    {this.props.sight.location.address}
+                    {this.props.address}
                 </div>
             </div>
         )
     }
 }
-export default Box
+export default LocaBox
