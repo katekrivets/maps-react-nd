@@ -23,7 +23,7 @@ const MyMapComponent = compose(
   <GoogleMap 
   defaultZoom={props.zoom} 
   defaultCenter={props.center}
-  onClick={props.onMapClick}>
+  onClick={props.closeInfoWindow}>
     { props.locations[0] && props.locations.map(marker => (
         <Marker icon={icon} 
           key={marker.venue.id} 
@@ -37,16 +37,26 @@ const MyMapComponent = compose(
     )})
     { props.showInfoWindow && 
           <InfoWindow 
-            position={{lat: props.chosenMarker.venue.location.lat, lng: props.chosenMarker.venue.location.lng}}
+            position={props.markerLoca}
             onCloseClick={props.closeInfoWindow}>
-                <section>
+                {props.chosenMarker.venue?
+                (<section>
                     <div className="location-name">{props.chosenMarker.venue.name}</div>
                     <div className="location-addr">
                         <p>{props.chosenMarker.venue.location.city}</p>
                         <span>{props.chosenMarker.venue.location.address},</span>
                         <span>{props.chosenMarker.venue.location.postalCode}</span>
                     </div>
-                </section>
+                </section>):
+                (<section>
+                  <div className="location-name">{props.chosenMarker.name}</div>
+                  <div className="location-addr">
+                      <p>{props.chosenMarker.location.city}</p>
+                      <span>{props.chosenMarker.location.address},</span>
+                      <span>{props.chosenMarker.location.postalCode}</span>
+                  </div>
+              </section>)
+              }
           </InfoWindow>
         }
   </GoogleMap>

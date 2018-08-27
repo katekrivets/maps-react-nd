@@ -13,7 +13,8 @@ class App extends Component {
     error: false,
     menuShown: true,
     showInfoWindow: false,
-    chosenMarker: {}
+    chosenMarker: {},
+    markerLoca: {}
   }
   componentDidMount() {
     this.getAllLocations()
@@ -46,21 +47,24 @@ class App extends Component {
   clickMarker = (marker) => {
     console.log(marker)
     this.setState({showInfoWindow:true,
-              chosenMarker: marker})
+                  chosenMarker: marker,
+                  markerLoca: {lat: marker.venue.location.lat, lng: marker.venue.location.lng}})
     console.log(this.state.showInfoWindow);
     
   }
   clickkBox = (loca) => {
     this.setState({
-      chosenMarker: loca.venue?loca:{},
-      showInfoWindow:true
+      chosenMarker: loca,
+      showInfoWindow:true,
+      markerLoca: loca.venue?{lat: loca.venue.location.lat, lng: loca.venue.location.lng}:{lat: loca.location.lat, lng: loca.location.lng}
     })
     console.log(loca)
   }
   closeInfoWindow = () => {
     this.setState({
       chosenMarker: {},
-      showInfoWindow: false
+      showInfoWindow: false,
+      markerLoca: {}
     })
   }
   render() {
@@ -87,6 +91,7 @@ class App extends Component {
               chosenMarker={this.state.chosenMarker}
               clickMarker={this.clickMarker}
               closeInfoWindow={this.closeInfoWindow}
+              markerLoca={this.state.markerLoca}
             />  
             
           </div>
