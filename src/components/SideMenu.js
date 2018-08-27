@@ -4,7 +4,6 @@ import LocaBox from './LocaBox';
 
 class SideMenu extends Component {
     render() {
-        console.log(this.props)
         return ( 
             <div className="side-bar">
                 <Search
