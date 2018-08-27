@@ -3,6 +3,7 @@ import './App.css';
 import Map from './components/Map';
 import SideMenu from './components/SideMenu';
 import { getLocations, searchLoca } from './LocationsApi';
+import Modal from 'react-responsive-modal';
 class App extends Component {
   state = {
     map: "",
@@ -13,12 +14,20 @@ class App extends Component {
     zoom: 12,
     locations: [],
     filteredLocations: [],
-    error: false,
+    error: "Something went wrong while fetching locations :(",
     menuShown: true,
     showInfoWindow: false,
     chosenMarker: {},
-    markerLoca: {}
+    markerLoca: {},
+    modalOpen: false
   }
+  onOpenModal = () => {
+    this.setState({ modalOpen: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ modalOpen: false });
+  };
   componentDidMount() {
     this.getAllLocations()
   }
@@ -30,9 +39,9 @@ class App extends Component {
           filteredLocations: locations
         });
       })
-      .catch(err => this.setState({
-        error: err
-      }))
+      .catch(err => {
+      console.log(err)
+      this.onOpenModal()})
   }
   getAllLocations() {
     getLocations()
@@ -43,9 +52,10 @@ class App extends Component {
           filteredLocations: locations
         });
       })
-      .catch(err => this.setState({
-        error: err
-      }))
+      .catch(err => {
+        
+        console.log(err)
+      this.onOpenModal()})
   }
   hideSideMenu = () => {
     this.setState(this.state.menuShown ? {
@@ -56,6 +66,7 @@ class App extends Component {
   }
 
   clickMarker = (marker) => {
+    console.log(marker)
     this.setState({
       showInfoWindow: true,
       chosenMarker: marker,
@@ -70,6 +81,7 @@ class App extends Component {
   }
 
   clickkBox = (loca) => {
+    console.log(loca)
     this.setState({
       chosenMarker: loca,
       showInfoWindow: true,
@@ -82,7 +94,7 @@ class App extends Component {
       }
     })
   }
-  
+
   closeInfoWindow = () => {
     this.setState({
       chosenMarker: {},
@@ -116,7 +128,9 @@ class App extends Component {
               closeInfoWindow={this.closeInfoWindow}
               markerLoca={this.state.markerLoca}
             />  
-            
+            <Modal open={this.state.modalOpen} onClose={this.onCloseModal} center>
+              <h3>{this.state.error}</h3>
+            </Modal>
           </div>
         </main>
       </div>
