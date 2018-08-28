@@ -24,7 +24,7 @@ class App extends Component {
   }
   onOpenModal = (message) => {
     this.setState({ 
-      error: message?message:"Something went wrong while fetching locations :( ",
+      error: message?message:"Something went wrong while fetching locations :( For proper info open console.",
       modalOpen: true });
   };
 
@@ -138,7 +138,7 @@ class App extends Component {
             <Modal 
               open={this.state.modalOpen} 
               onClose={this.onCloseModal} center>
-              <h3>{this.state.error}</h3>
+              <h4>{this.state.error}</h4>
             </Modal>
           </div>
         </main>

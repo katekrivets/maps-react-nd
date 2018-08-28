@@ -25,7 +25,7 @@ const MyMapComponent = compose(
   defaultZoom={props.zoom} 
   defaultCenter={props.center}
   onClick={props.closeInfoWindow}
-  onError={console.log("Error")}>
+  onError={console.log("Map loaded with error")}>
     { props.locations[0] && props.locations.map(marker => (
       marker.venue?(
         <Marker icon={icon} 
