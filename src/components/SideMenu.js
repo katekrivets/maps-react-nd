@@ -8,6 +8,7 @@ class SideMenu extends Component {
             <div className="side-bar">
                 <Search
                     searchLocations={this.props.searchLocations}
+                    tabIndex="2"
                 />
                 <div className="search-results">
                     {this.props.filteredLocations && (this.props.filteredLocations.map((loca) => (

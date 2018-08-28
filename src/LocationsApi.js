@@ -13,7 +13,7 @@ export const getLocations = () => {
         )
         .catch((error) => {
             console.log(error);
-            reject(error);
+            reject(error); //this errors are handled in app.js , if error occurs the modal is shown
         })
     })
 }
@@ -27,7 +27,7 @@ export const searchLoca = (query) => {
         )
         .catch((error) => {
             console.log(error);
-            reject(error);
+            reject(error); //this errors are handled in app.js , if error occurs the modal is shown
         })
     })
 }

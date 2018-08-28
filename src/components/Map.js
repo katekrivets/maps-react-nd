@@ -23,10 +23,12 @@ const MyMapComponent = compose(
   <GoogleMap 
   defaultZoom={props.zoom} 
   defaultCenter={props.center}
-  onClick={props.closeInfoWindow}>
+  onClick={props.closeInfoWindow}
+  onerror={console.log}>
     { props.locations[0] && props.locations.map(marker => (
       marker.venue?(
         <Marker icon={icon} 
+          tabIndex="1"
           key={marker.venue.id} 
           position={{ lat: marker.venue.location.lat, lng: marker.venue.location.lng }} 
           name={marker.venue.name}
@@ -35,7 +37,8 @@ const MyMapComponent = compose(
           onClick={() => (props.clickMarker(marker))}
           animation={props.chosenMarker.venue? marker.venue.id === props.chosenMarker.venue.id ?1:null : null}
         />):(
-          <Marker icon={icon} 
+        <Marker icon={icon} 
+          tabIndex="1"
           key={marker.id} 
           position={{ lat: marker.location.lat, lng: marker.location.lng }} 
           name={marker.name}
@@ -46,7 +49,7 @@ const MyMapComponent = compose(
         />
         )
       )
-    )})
+    )}
     { props.showInfoWindow && 
           <InfoWindow 
             position={props.markerLoca}

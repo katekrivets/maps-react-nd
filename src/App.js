@@ -42,7 +42,7 @@ class App extends Component {
       })
       .catch(err => {
       console.log(err)
-      this.onOpenModal()})
+      this.onOpenModal()}) //handling errors with modal window
   }
   getAllLocations() {
     getLocations()
@@ -56,7 +56,7 @@ class App extends Component {
       .catch(err => {
         
         console.log(err)
-      this.onOpenModal()})
+      this.onOpenModal()}) //handling errors with modal window
   }
   hideSideMenu = () => {
     this.setState(this.state.menuShown ? {
@@ -83,7 +83,6 @@ class App extends Component {
   }
 
   clickkBox = (loca) => {
-    console.log(loca)
     this.setState({
       chosenMarker: loca,
       showInfoWindow: true,
@@ -110,8 +109,8 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <div className="burger-menu" onClick={this.hideSideMenu}></div>
-          <div className="github-link"><a href="https://github.com/katerren">GitHub</a></div>
+          <div tabIndex="1" aria-label="Menu button" className="burger-menu" onClick={this.hideSideMenu}></div>
+          <div tabIndex="6" className="github-link" aria-label="Link to github" ><a href="https://github.com/katerren">GitHub</a></div>
         </header>
         <main>
           { this.state.menuShown && 

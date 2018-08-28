@@ -11,6 +11,8 @@ class Search extends Component {
         return ( 
             <div className="search">
                 <DebounceInput
+                    tabIndex="2"
+                    aria-label="Search input"
                     placeholder="Search by name or category..."
                     minLength={2}
                     debounceTimeout={1000}
