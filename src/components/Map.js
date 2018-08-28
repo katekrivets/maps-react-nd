@@ -1,5 +1,6 @@
 import React from "react";
 import { compose, withProps} from "recompose";
+
 import {
   withScriptjs,
   withGoogleMap,
@@ -24,7 +25,7 @@ const MyMapComponent = compose(
   defaultZoom={props.zoom} 
   defaultCenter={props.center}
   onClick={props.closeInfoWindow}
-  onerror={console.log}>
+  onError={console.log("Error")}>
     { props.locations[0] && props.locations.map(marker => (
       marker.venue?(
         <Marker icon={icon} 

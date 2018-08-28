@@ -14,7 +14,7 @@ class App extends Component {
     zoom: 12,
     locations: [],
     filteredLocations: [],
-    error: "Something went wrong while fetching locations :(",
+    error: "",
     menuShown: true,
     showInfoWindow: false,
     chosenMarker: {},
@@ -22,8 +22,10 @@ class App extends Component {
     modalOpen: false,
     setAnimation: 0
   }
-  onOpenModal = () => {
-    this.setState({ modalOpen: true });
+  onOpenModal = (message) => {
+    this.setState({ 
+      error: message?message:"Something went wrong while fetching locations :( ",
+      modalOpen: true });
   };
 
   onCloseModal = () => {
@@ -131,8 +133,11 @@ class App extends Component {
               closeInfoWindow={this.closeInfoWindow}
               markerLoca={this.state.markerLoca}
               setAnimation={this.state.setAnimation}
+              onOpenModal={this.onOpenModal}
             />  
-            <Modal open={this.state.modalOpen} onClose={this.onCloseModal} center>
+            <Modal 
+              open={this.state.modalOpen} 
+              onClose={this.onCloseModal} center>
               <h3>{this.state.error}</h3>
             </Modal>
           </div>
