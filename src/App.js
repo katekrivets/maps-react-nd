@@ -4,6 +4,7 @@ import Map from './components/Map';
 import SideMenu from './components/SideMenu';
 import { getLocations, searchLoca } from './LocationsApi';
 import Modal from 'react-responsive-modal';
+import ErrorBoundary from './components/ErrorBoundary';
 class App extends Component {
   state = {
     map: "",
@@ -123,6 +124,7 @@ class App extends Component {
               >
             </SideMenu> }
           <div className="map-container">
+          <ErrorBoundary>
             <Map 
               center={this.state.coordinates} 
               zoom={this.state.zoom} 
@@ -135,6 +137,7 @@ class App extends Component {
               setAnimation={this.state.setAnimation}
               onOpenModal={this.onOpenModal}
             />  
+            </ErrorBoundary>  
             <Modal 
               open={this.state.modalOpen} 
               onClose={this.onCloseModal} center>

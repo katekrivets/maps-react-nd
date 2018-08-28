@@ -8,7 +8,7 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import icon from './../img/marker.svg'
+import icon from './../img/pin.svg'
 
 const MyMapComponent = compose(
   withProps({

@@ -22,7 +22,7 @@ main {
 /*header*/
 header {
   height: 50px;
-  background-color: #F4EAEA ;
+  background-color: #dfdfdf ;
   box-shadow: 0px 2px 2px 0px rgba(112, 94, 92, 0.281);
   z-index: 2;
   display: flex;
@@ -48,7 +48,7 @@ header {
 
 .github-link a {
   text-decoration: none;
-  color: #6d5d5d;
+  color: #5d6d6a;
   font-weight: bold;
   
 }
@@ -71,17 +71,17 @@ header {
   width: 100%;
   box-sizing: border-box;
   height: 45px;
-  border: 2px solid #f0cbc9 ;
+  border: 2px solid #dfdfdf ;
   border-radius: 4px;
   padding: 5px 10px;
   font-size: 14px;
-  background-color: #fbf7f7 ;
-  color: #6d5d5d;
+  background-color: #f7fafb ;
+  color: #5d6d69;
 }
 .search input:active,
 .search input:focus {
   outline: none;
-  box-shadow: inset 0px 0px 5px 0px rgba(222,189,189,1);
+  box-shadow: inset 0px 0px 5px 0px rgb(159, 211, 204);
 }
 
 /*location box*/
@@ -93,9 +93,9 @@ header {
   width: 100%;
   margin-bottom: 15px;
   padding: 10px 20px;
-  background-color: #F4EAEA;
+  background-color: #dee9eb;
   border-radius: 3px;
-  color: #6d5d5d;
+  color: #3e4949;
   box-sizing: border-box;
 
 }
@@ -111,7 +111,7 @@ header {
 .location-address {
   margin: 8px 0 5px;
   font-size: 13px;
-  color: #927c7c;
+  color: #67837f;
   box-sizing: border-box;
 }
 /*locations side-menu*/
@@ -123,7 +123,7 @@ header {
   overflow-y: scroll;
 }
 .box:hover {
-  background-color: #e9d0d0;
+  background-color: #a9bcc3;
 }
 
 .loca-name {
@@ -138,4 +138,24 @@ header {
 
 .information {
   color: #3e5841 ;
+}
+
+/*error component*/
+.error-component {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  
+}
+.error-component section {
+  padding: 40vh 0;
+}
+.error-component  p {
+  margin: 0px;
+  color: #162e2e;  
+}
+.main-text {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 5px;
 }
