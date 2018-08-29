@@ -112,7 +112,7 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <div tabIndex="1" aria-label="Menu button" className="burger-menu" onClick={this.hideSideMenu}></div>
+          <div tabIndex="1" aria-label="Menu button" className="burger-menu" onClick={this.hideSideMenu} ></div>
           <div tabIndex="6" className="github-link" aria-label="Link to github" ><a href="https://github.com/katerren">GitHub</a></div>
         </header>
         <main>
@@ -123,7 +123,7 @@ class App extends Component {
               clickkBox={this.clickkBox}
               >
             </SideMenu> }
-          <div className="map-container">
+          <div className="map-container" aria-label="Map">
           <ErrorBoundary>
             <Map 
               center={this.state.coordinates} 

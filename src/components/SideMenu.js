@@ -10,7 +10,7 @@ class SideMenu extends Component {
                     searchLocations={this.props.searchLocations}
                     tabIndex="2"
                 />
-                <div className="search-results">
+                <div className="search-results" aria-label="Search results">
                     {this.props.filteredLocations && (this.props.filteredLocations.map((loca) => (
                             loca.venue?
                             <LocaBox
